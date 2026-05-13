@@ -8,7 +8,10 @@ import {
   type JPLDashboardReducerOptions,
 } from './JPLDashboardReducer';
 
-export type JPLDashboardReducerInit = { src: string };
+export type JPLDashboardReducerInit = {
+  src: string;
+  initialState?: DashboardState;
+};
 
 export function createJPLDashboardReducer(
   options?: JPLDashboardReducerOptions,
@@ -18,11 +21,11 @@ export function createJPLDashboardReducer(
     init: DashboardReducerInit,
     callback: (state: DashboardState) => void,
   ) => {
-    return new JPLDashboardReducer(
-      engine,
-      (init as JPLDashboardReducerInit).src ?? '',
-      callback,
-      options,
-    );
+    const { src, initialState } = init as JPLDashboardReducerInit;
+
+    return new JPLDashboardReducer(engine, src ?? '', callback, {
+      ...options,
+      initialState: initialState ?? options?.initialState,
+    });
   };
 }
