@@ -1,11 +1,11 @@
 export type JPLDashboardLayoutNode = {
-  type: 'jpl';
+  type: string;
   id?: string;
   src: string;
 };
 
 export type JPLDashboardTileNode = {
-  type: 'jpl';
+  type: string;
   id?: string;
   src: string;
 };
