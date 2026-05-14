@@ -1,6 +1,13 @@
 import react from '@vitejs/plugin-react';
 import dts from 'unplugin-dts/vite';
 import { defineConfig } from 'vite';
+import packages from './package.json';
+
+type Packages = {
+  dependencies?: Record<string, unknown>;
+  peerDependencies?: Record<string, unknown>;
+};
+const pkg = packages as Packages;
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -16,10 +23,10 @@ export default defineConfig({
     copyPublicDir: false,
     rollupOptions: {
       external: [
-        '@jplorg/jpl',
-        '@rotorjs/dashboards',
-        'react',
-        'react-dom',
+        ...Object.keys({
+          ...pkg.dependencies,
+          ...pkg.peerDependencies,
+        }),
         'react/jsx-runtime',
       ],
       output: {
