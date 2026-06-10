@@ -6,7 +6,7 @@ import {
   type DashboardState,
   type DashboardStateDescriptor,
 } from '@rotorjs/dashboard';
-import type { JPLVarInitFunction } from './JPLVarInitFunction';
+import type { JPLVarHandler } from './JPLVarHandler';
 
 export type JPLStateReducerParams = {
   src?: string;
@@ -17,7 +17,7 @@ export type JPLStateReducerOptions<
   Reducer extends JPLStateReducer = JPLStateReducer,
 > = {
   program?: JPLProgram | string;
-  vars?: Record<string, JPLVarInitFunction<Reducer> | unknown>;
+  vars?: Record<string, JPLVarHandler<Reducer>>;
 };
 
 export class JPLStateReducer<
@@ -37,10 +37,7 @@ export class JPLStateReducer<
 
     this.#options = options ?? {};
     this.#varGetters = Object.entries(this.#options.vars ?? {}).map(
-      ([name, initOrVar]) => [
-        name,
-        typeof initOrVar === 'function' ? initOrVar(this) : () => initOrVar,
-      ],
+      ([name, init]) => [name, init(this)],
     );
 
     this.update();
