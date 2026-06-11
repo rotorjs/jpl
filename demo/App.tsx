@@ -1,8 +1,11 @@
 import { createJPLStateReducerConfig } from '@/createJPLStateReducerConfig';
-import { DashboardEngine } from '@rotorjs/dashboard';
+import { DashboardEngine, DashboardEventTarget } from '@rotorjs/dashboard';
 import './App.css';
 
-const _engine = new DashboardEngine({ script: createJPLStateReducerConfig() });
+const target = new DashboardEventTarget();
+const _engine = new DashboardEngine(target, {
+  script: createJPLStateReducerConfig(),
+});
 
 export default function App() {
   return 'Demo';
