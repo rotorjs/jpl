@@ -52,7 +52,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@jplorg/jpl": "^2.1.2",
-    "@rotorjs/dashboard": "^0.5.1",
+    "@rotorjs/dashboard": "^0.5.2",
     "@types/node": "^25.9.3",
     "@types/object-hash": "^3.0.6",
     "@types/react": "^19.2.17",
