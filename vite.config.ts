@@ -33,7 +33,7 @@ export default defineConfig({
     lib: {
       entry: {
         'esm/main': 'lib/main',
-        'esm/presets': 'lib/presets',
+        ...createEntrypoints('presets', 'esm'),
         ...createEntrypoints('vars', 'esm'),
       },
       formats: ['es'],
