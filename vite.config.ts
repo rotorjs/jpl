@@ -3,7 +3,7 @@ import { readdirSync } from 'fs';
 import { basename, extname, join } from 'path';
 import dts from 'unplugin-dts/vite';
 import { defineConfig } from 'vite';
-import packages from './package.json';
+import packages from './package.json' with { type: 'json' };
 
 type Packages = {
   dependencies?: Record<string, unknown>;
