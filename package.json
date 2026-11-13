@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@jplorg/jpl": "^2.2.0",
+    "@jplorg/jpl": "^2.3.0",
     "@rotorjs/dashboard": "^0.7.3",
     "@types/node": "^26.6.6",
     "@types/object-hash": "^3.0.6",
