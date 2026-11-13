@@ -34,8 +34,8 @@
     "./main": null,
     "./*": {
       "import": {
-        "types": "./dist/types/*",
-        "default": "./dist/esm/*"
+        "types": "./dist/types/*.d.ts",
+        "default": "./dist/esm/*.js"
       }
     }
   },

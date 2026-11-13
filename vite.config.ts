@@ -14,7 +14,7 @@ const pkg = packages as Packages;
 function createEntrypoints(base: string, outputPrefix?: string) {
   return Object.fromEntries(
     readdirSync(join('lib', base)).map((name) => [
-      join(outputPrefix ?? '', base, basename(name, extname(name)), 'index'),
+      join(outputPrefix ?? '', base, basename(name, extname(name))),
       join('lib', base, basename(name, extname(name))),
     ]),
   );
