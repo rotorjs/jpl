@@ -33,7 +33,7 @@ export default function jplFormatNumber(reducer: DashboardStateReducer) {
         runtime,
         arg0,
         ['null', 'object'],
-        'expected an object as number format but got %s (%s<100v)',
+        'expected an object as number format but got %s (%*<100v)',
       );
 
       return next(runtime.normalizeValue(formatter.format(value, format)));
