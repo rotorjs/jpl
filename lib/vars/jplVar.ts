@@ -10,13 +10,13 @@ import {
 } from '@rotorjs/dashboard';
 
 export default function jplVar(reducer: DashboardStateReducer) {
-  const requestedVars = new Set<string>();
+  const requestedInterests = new Set<string>();
 
   return (): JPLFunc => {
-    requestedVars.forEach((varName) => {
-      reducer.removeInterest(dashboardVarInterest(varName));
+    requestedInterests.forEach((interest) => {
+      reducer.removeInterest(interest);
     });
-    requestedVars.clear();
+    requestedInterests.clear();
 
     return (
       runtime: JPLRuntime,
@@ -31,8 +31,9 @@ export default function jplVar(reducer: DashboardStateReducer) {
         '%s (%*<100v) cannot be used as a variable name',
       );
 
-      requestedVars.add(varName);
-      reducer.addInterest(dashboardVarInterest(varName));
+      const varInterest = dashboardVarInterest(varName);
+      requestedInterests.add(varInterest);
+      reducer.addInterest(varInterest);
 
       return next(
         runtime.normalizeValue(reducer.engine.getVar(varName)?.value),

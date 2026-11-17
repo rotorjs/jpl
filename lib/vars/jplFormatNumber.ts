@@ -5,8 +5,6 @@ import {
   type JPLRuntimeSignal,
 } from '@jplorg/jpl';
 import {
-  dashboardFactInterest,
-  dashboardLocaleFact,
   type DashboardStateReducer,
   type NumberFormat,
   NumberFormatter,
@@ -16,7 +14,7 @@ export default function jplFormatNumber(reducer: DashboardStateReducer) {
   const formatter = new NumberFormatter({ reducer });
 
   return (): JPLFunc => {
-    reducer.removeInterest(dashboardFactInterest(dashboardLocaleFact));
+    formatter.removeInterests();
 
     return (
       runtime: JPLRuntime,
