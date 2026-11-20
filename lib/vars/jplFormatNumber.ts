@@ -37,7 +37,7 @@ export default function jplFormatNumber(reducer: DashboardStateReducer) {
         runtime,
         args[0],
         ['null', 'object'],
-        'invalid argument[0] (%s %*<100v): expected object',
+        'invalid argument 0 (%s %*<100v): expected object',
       );
 
       return next(runtime.normalizeValue(formatter.format(value, format)));
