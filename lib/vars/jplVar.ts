@@ -1,5 +1,6 @@
 import { assertType } from '@/utils';
 import {
+  JPLRuntimeError,
   type JPLFunc,
   type JPLRuntime,
   type JPLRuntimeSignal,
@@ -23,12 +24,15 @@ export default function jplVar(reducer: DashboardStateReducer) {
       _signal: JPLRuntimeSignal,
       next: (output: unknown) => Promise<unknown[]> | unknown[],
       input: unknown,
+      ...args: unknown[]
     ): Promise<unknown[]> | unknown[] => {
+      if (args.length > 0) throw new JPLRuntimeError('too many arguments');
+
       const varName = assertType<string>(
         runtime,
         input,
         ['string'],
-        '%s (%*<100v) cannot be used as a variable name',
+        'invalid input (%s %*<100v): expected string',
       );
 
       const varInterest = dashboardVarInterest(varName);
