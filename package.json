@@ -1,6 +1,6 @@
 {
   "name": "@rotorjs/jpl",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Rotor",
   "author": {
     "name": "Aaron Burmeister"
@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@jplorg/jpl": "^2.3.0",
+    "@jplorg/jpl": "^2.3.1",
     "@rotorjs/dashboard": "^0.7.4",
     "@types/node": "^26.6.6",
     "@types/object-hash": "^3.0.6",
